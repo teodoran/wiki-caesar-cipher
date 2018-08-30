@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json.Linq;
 
-namespace WikiSearch
+namespace SearchWikipedia.Model
 {
     public class SearchResultCollection
     {
@@ -65,6 +65,6 @@ namespace WikiSearch
             }
 
             builder.AppendLine();
-        } 
+        }
     }
 }

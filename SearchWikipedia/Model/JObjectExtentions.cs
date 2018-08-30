@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace WikiSearch
+namespace SearchWikipedia.Model
 {
     internal static class JObjectExtentions
     {

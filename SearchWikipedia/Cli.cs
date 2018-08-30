@@ -1,6 +1,7 @@
 ﻿using System;
+using SearchWikipedia.Client;
 
-namespace WikiSearch
+namespace SearchWikipedia
 {
     public class Cli
     {
@@ -17,7 +18,7 @@ namespace WikiSearch
             PromptWelcomeMessage();
             
             var client = new WikipediaClient();
-            var wikiSearch = new WikiSearch(client);
+            var wikiSearch = new SearchWikipedia(client);
 
             wikiSearch.ReadSearchPrint(
                 read: () => Console.ReadLine().Trim(),

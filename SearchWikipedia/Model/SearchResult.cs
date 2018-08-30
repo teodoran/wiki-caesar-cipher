@@ -1,4 +1,4 @@
-namespace WikiSearch
+namespace SearchWikipedia.Model
 {
     public class SearchResult
     {

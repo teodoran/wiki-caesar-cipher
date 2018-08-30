@@ -1,15 +1,14 @@
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System;
+using SearchWikipedia.Model;
+using SearchWikipedia.Client;
 
-namespace WikiSearch
+namespace SearchWikipedia
 {
-    public class WikiSearch
+    public class SearchWikipedia
     {
         private IWikipediaClient _client;
 
-        public WikiSearch(IWikipediaClient client)
+        public SearchWikipedia(IWikipediaClient client)
         {
             _client = client;
         }

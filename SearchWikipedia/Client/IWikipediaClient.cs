@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace WikiSearch
+namespace SearchWikipedia.Client
 {
     public interface IWikipediaClient
     {
