@@ -19,7 +19,7 @@ test_script:
       # Uninstrument assemblies, it's important if you're going to publish or deploy build outputs
   - ps: dotnet minicover uninstrument --workdir ../
       # Create a OpenCover-formatted report
-  - ps: dotnet minicover opencoverreport --workdir ../ --threshold 90
+  - ps: dotnet minicover opencoverreport --workdir ../ --threshold 0
 after_test:
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
