@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DotNetCliToolReference Include="MiniCover" Version="2.0.0-ci-20180729170656" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="../CaesarCipher/CaesarCipher.csproj" />
   </ItemGroup>
 
