@@ -20,6 +20,7 @@ test_script:
   - ps: dotnet minicover uninstrument --workdir ../
       # Create a OpenCover-formatted report
   - ps: dotnet minicover opencoverreport --workdir ../ --threshold 0
+  - ps: cd ..
 after_test:
   - ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
