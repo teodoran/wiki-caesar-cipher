@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>1.0.0.0</Version>
+    <Authors>Teodor Ande Elstad</Authors>
+    <Company>Computas AS</Company>
+    <Description>A command-line utility to encrypt and decrypt textfiles using a Caesar cipher (https://en.wikipedia.org/wiki/Caesar_cipher)</Description>
+    <RepositoryUrl>https://github.com/teodoran/cx-dotnet-assignment</RepositoryUrl>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.3.0" />
+  </ItemGroup>
+
+</Project>
