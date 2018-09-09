@@ -9,16 +9,18 @@ build_script:
   - ps: dotnet restore ./CaesarCipher.Tests/CaesarCipher.Tests.csproj
   - ps: dotnet build ./CaesarCipher.Tests/CaesarCipher.Tests.csproj
 test_script:
+  - ps: cd ./CaesarCipher.Tests
       # Instrument assemblies
-  - ps: dotnet minicover instrument --workdir ./ --assemblies CaesarCipher.Tests/bin/**/*.dll --sources CaesarCipher/**/*.cs
+  - ps: dotnet minicover instrument --workdir ../ --assemblies CaesarCipher.Tests/bin/**/*.dll --sources CaesarCipher/**/*.cs
       # Reset hits count in case minicover was run for this project
   - ps: dotnet minicover reset
       # Run tests
-  - ps: dotnet test --no-build ./CaesarCipher.Tests/CaesarCipher.Tests.csproj
+  - ps: dotnet test --no-build
       # Uninstrument assemblies, it's important if you're going to publish or deploy build outputs
-  - ps: dotnet minicover uninstrument --workdir ./
+  - ps: dotnet minicover uninstrument --workdir ../
       # Create a OpenCover-formatted report
-  - ps: dotnet minicover opencoverreport --workdir ./ --threshold 90
+  - ps: dotnet minicover opencoverreport --workdir ../ --threshold 90
+  - ps: cd ../
       # Upload coverage results to codecov.io
   - ps: $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
   - ps: Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
