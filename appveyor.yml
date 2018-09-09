@@ -19,7 +19,7 @@ test_script:
       # Uninstrument assemblies, it's important if you're going to publish or deploy build outputs
   - ps: dotnet minicover uninstrument --workdir ../
       # Create a OpenCover-formatted report
-  - ps: dotnet minicover opencoverreport --workdir ../ --threshold 0
+  - ps: dotnet minicover opencoverreport --workdir ../ --threshold 50
   - ps: cd ..
 after_test:
   - ps: |
