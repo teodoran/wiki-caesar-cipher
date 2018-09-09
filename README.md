@@ -7,6 +7,8 @@ _Example solution of a short home assignment for .NET developers_
 ## CaesarCipher
 _A command-line utility to encrypt and decrypt textfiles using a [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher)_
 
+[![Build status](https://ci.appveyor.com/api/projects/status/pdsyaxogoi7jeoq0?svg=true)](https://ci.appveyor.com/project/teodoran/cx-dotnet-assignment) [![codecov](https://codecov.io/gh/teodoran/cx-dotnet-assignment/branch/master/graph/badge.svg)](https://codecov.io/gh/teodoran/cx-dotnet-assignment)
+
 ### Installation
 
 __1. Get .NET Core 2.1 or later:__
