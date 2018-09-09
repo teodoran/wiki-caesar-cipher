@@ -22,6 +22,5 @@ test_script:
   - ps: dotnet minicover opencoverreport --workdir ../ --threshold 90
   - ps: cd ../
       # Upload coverage results to codecov.io
-  - ps: $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
   - ps: Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
   - ps: bash codecov.sh -f "opencovercoverage.xml"
