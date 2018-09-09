@@ -4,3 +4,8 @@
 # Build artifacts
 **/bin/
 **/obj/
+
+# MiniCover output
+coverage.hits
+coverage.json
+opencovercoverage.xml
