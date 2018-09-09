@@ -6,8 +6,8 @@ install:
   - ps: choco install opencover.portable
   - ps: choco install codecov
 build_script:
-  - ps: dotnet restore ./CaesarCipher.Tests/CaesarCipher.Tests.fsproj
-  - ps: dotnet build ./CaesarCipher.Tests/CaesarCipher.Tests.fsproj
+  - ps: dotnet restore ./CaesarCipher.Tests/CaesarCipher.Tests.csproj
+  - ps: dotnet build ./CaesarCipher.Tests/CaesarCipher.Tests.csproj
 test_script:
   - ps: cd ./CaesarCipher.Tests
   - ps: dotnet restore
