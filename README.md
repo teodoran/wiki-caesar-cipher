@@ -1,15 +1,11 @@
-cx-dotnet-assignment
-====================
-
-_Example solution of a short home assignment for .NET developers_
-
-
-## CaesarCipher
+CaesarCipher
+============
 _A command-line utility to encrypt and decrypt textfiles using a [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher)_
 
-[![Build status](https://ci.appveyor.com/api/projects/status/pdsyaxogoi7jeoq0?svg=true)](https://ci.appveyor.com/project/teodoran/cx-dotnet-assignment) [![codecov](https://codecov.io/gh/teodoran/cx-dotnet-assignment/branch/master/graph/badge.svg)](https://codecov.io/gh/teodoran/cx-dotnet-assignment)
+[![Build status](https://ci.appveyor.com/api/projects/status/pdsyaxogoi7jeoq0?svg=true)](https://ci.appveyor.com/project/teodoran/cx-dotnet-assignment) [![codecov](https://codecov.io/gh/teodoran/caesar-cipher/branch/master/graph/badge.svg)](https://codecov.io/gh/teodoran/caesar-cipher)
 
-### Installation
+Installation
+------------
 
 __1. Get .NET Core 2.1 or later:__
 
@@ -34,9 +30,10 @@ lawlyplujlgpzgæolgælhjolygvmghssgæopunz
 ...
 ```
 
-### Using CaesarCipher
+Using CaesarCipher
+------------------
 
-__Encrypting a file:__
+### Encrypting a file
 
 Encryption using a Caesar cipher, works by shifting all letters in the plaintext (the text you want to encrypt) a fixed number of letters (usually called a Caesar shift) down the alphabet.
 
@@ -55,7 +52,7 @@ Remember to make a note of the Caesar shift! This is your encryption key, and if
 
 _Tip: If you want to save your encrypted text, you can pipe it to another file using `$> dotnet run 7 plaintext.txt > ciphertext-shift-7.txt`._
 
-__Decrypting a file:__
+### Decrypting a file
 
 To decrypt text encrypted with CaesarCipher, you give CaesarCipher the Caesar shift the text was originally encrypted with, a file or a path to a file containing the encrypted text (usually called ciphertext), and the parameter `-d` or `--decrypt`.
 
@@ -68,7 +65,7 @@ men freely believe that which they desire
 i came i saw i conquered
 ```
 
-__Viewing all parameters:__
+### Viewing all parameters
 
 If given no arguments (or wrong arguments!) CaesarCipher will print information about all available options.
 
@@ -92,30 +89,3 @@ A required value not bound to option name is missing.
   input file (pos. 1)      Required. Input file with plaintext to encode or ciphertext to decode.
 
 ```
-
-## Grading CaesarCipher solutions
-_This section contains some tips for grading different CaesarCipher implementations_
-
-### About the sample implementation
-
-Say something about the sample implementaions being a lot more that what's expected.
-
-### Parsing input arguments
-
-Maybe use lib, maybe not. Both will fly, but maybe ask if something could be better if no checks in code.
-
-### Reading file
-
-Is filename validated? Is entire file read into memory at once?
-
-### Encrypting / Decrypting
-
-Does it work? Does it work for large or negative caesar shifts? What happens to letters not in alphabet? Is the code easy to follow? Does it use unneccessary nesting og is otherwise obtuse? Is string handeling efficient?
-
-### Testing
-
-This is optional, but are there any tests? Does the tests target interesting "seams" in the code, or is it just targeting all functions in all classes? Has anything been done to isolate file reading and console writing from the code under test?
-
-### Other embellishments
-
-Have the candidate done something out of the box?
