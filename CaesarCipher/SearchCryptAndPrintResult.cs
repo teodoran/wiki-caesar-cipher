@@ -20,7 +20,6 @@ namespace CaesarCipher
             print($"Searching for { query }...");
 
             var json = await _client.SearchAsync(query);
-            print(json);
             var results = new SearchResultCollection(json);
 
             print(results.ToString());
