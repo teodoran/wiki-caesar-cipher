@@ -13,7 +13,7 @@ namespace CaesarCipher.Tests
         [InlineData("No one is so brave that he is not disturbed by something unexpected.", "zælæzqlualaæln mdqlbtmbltqlualzæblpuabc nqplnglaæyqbtuzslczqføqobqp", 42)]
         public void EncryptionShouldWork(string plaintext, string ciphertext, int shift)
         {
-            var lines = new List<string>{ plaintext };
+            var lines = new List<string> { plaintext };
             var ciphertextLines = lines.CryptLines(shift);
 
             ciphertextLines.Should().ContainSingle().Which.Should().Be(ciphertext);
@@ -33,7 +33,7 @@ namespace CaesarCipher.Tests
         [Fact]
         public void EncryptionAndDecryptionShouldWorkForMultipleLines()
         {
-            var plaintextLines = new List<string>{ "i came", "i saw", "i conquered" };
+            var plaintextLines = new List<string> { "i came", "i saw", "i conquered" };
             var ciphertextLines = new List<string> { "pgjhtl", "pgzh ", "pgjvuxølylk" };
 
             plaintextLines.CryptLines(7, decrypt: false).Should().ContainInOrder(ciphertextLines);

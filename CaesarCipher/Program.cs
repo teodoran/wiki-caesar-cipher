@@ -1,36 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using CommandLine;
+using CaesarCipher.WikiSearch;
 
 namespace CaesarCipher
-{   
+{
     public class Program
-    {
-        static void RunCryptAndPrintResults(CommandLineOptions options)
-        {
-            if (!File.Exists(options.InputFile))
-            {
-                Console.WriteLine($"{ options.InputFile } is not a file");
-                return;
-            }
-
-            var cryptedLines = File
-                .ReadLines(options.InputFile)
-                .CryptLines(options.Shift, options.Decrypt);
-
-            foreach (var line in cryptedLines)
-            {
-                Console.WriteLine(line);
-            }
-        }
-        
+    {   
         static void Main(string[] args)
         {
+            var client = new WikipediaClient();
+            var runner = new SearchCryptAndPrintResult(client);
+            
             CommandLine.Parser.Default
                 .ParseArguments<CommandLineOptions>(args)
-                .WithParsed<CommandLineOptions>(RunCryptAndPrintResults);
+                .WithParsed<CommandLineOptions>(options =>
+                {
+                    runner
+                        .Run(options, s => Console.WriteLine(s))
+                        .GetAwaiter().GetResult();
+                });
         }
     }
 }
