@@ -8,15 +8,15 @@ namespace CaesarCipher
     {   
         static void Main(string[] args)
         {
-            var client = new WikipediaClient();
-            var runner = new SearchCryptAndPrintResult(client);
+            var client = new WebClient();
+            var runner = new WikiCrypt(client);
             
             CommandLine.Parser.Default
                 .ParseArguments<CommandLineOptions>(args)
                 .WithParsed<CommandLineOptions>(options =>
                 {
                     runner
-                        .Run(options, s => Console.WriteLine(s))
+                        .CryptWikiSearchResult(options, s => Console.WriteLine(s))
                         .GetAwaiter().GetResult();
                 });
         }

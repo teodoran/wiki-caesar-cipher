@@ -1,24 +1,21 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
-using FluentAssertions;
 using FakeItEasy;
-using CaesarCipher;
 using CaesarCipher.WikiSearch;
 
 namespace CaesarCipher.Tests
 {
-    public class SearchCryptAndPrintResultTests
+    public class WikiCryptTests
     {
-        private readonly IWikipediaClient _client;
-        private readonly SearchCryptAndPrintResult _runner;
+        private readonly IWebClient _client;
+        private readonly WikiCrypt _runner;
         private readonly Action<string> _writeLine;
 
-        public SearchCryptAndPrintResultTests()
+        public WikiCryptTests()
         {
-            _client = A.Fake<IWikipediaClient>();
-            _runner = new SearchCryptAndPrintResult(_client);
+            _client = A.Fake<IWebClient>();
+            _runner = new WikiCrypt(_client);
             _writeLine = A.Fake<Action<string>>();
         }
 
@@ -46,11 +43,12 @@ namespace CaesarCipher.Tests
                 Decrypt = decrypt
             };
 
+            var correctUrl = $"https://www.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch={ query }";
             A.CallTo(() =>
-                _client.SearchAsync(query))
+                _client.GetContent(A<Uri>.That.Matches(uri => uri.AbsoluteUri == correctUrl)))
                 .Returns(Task.FromResult(json));
 
-            await _runner.Run(options, _writeLine);
+            await _runner.CryptWikiSearchResult(options, _writeLine);
 
             A.CallTo(() => _writeLine($"Searching for { query }...")).MustHaveHappened()
                 .Then(A.CallTo(() => _writeLine(A<string>.That.Contains(partOfSnippet))).MustHaveHappened())
