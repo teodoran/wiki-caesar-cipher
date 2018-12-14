@@ -36,11 +36,12 @@ namespace CaesarCipher.Tests
             false)]
         public async Task WhenSearchingForQuery_ShouldDisplaySearchResult_AndEncryptedSnippet(string query, int shift, string json, string partOfSnippet, string encryptedSnippet, bool decrypt)
         {
-            var options = new CommandLineOptions
+            var decryptFlag = decrypt ? "-d" : ""; 
+            var args = new string[]
             {
-                Shift = shift,
-                Query = query,
-                Decrypt = decrypt
+                shift.ToString(),
+                query,
+                decryptFlag
             };
 
             var correctUrl = $"https://www.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch={ query }";
@@ -48,7 +49,7 @@ namespace CaesarCipher.Tests
                 _client.GetContent(A<Uri>.That.Matches(uri => uri.AbsoluteUri == correctUrl)))
                 .Returns(Task.FromResult(json));
 
-            await _runner.CryptWikiSearchResult(options, _writeLine);
+            await _runner.CryptWikiSearchResult(args, _writeLine);
 
             A.CallTo(() => _writeLine($"Searching for { query }...")).MustHaveHappened()
                 .Then(A.CallTo(() => _writeLine(A<string>.That.Contains(partOfSnippet))).MustHaveHappened())

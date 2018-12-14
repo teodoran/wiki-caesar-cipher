@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
+using CommandLine;
 using CaesarCipher.WikiSearch;
 
 namespace CaesarCipher
@@ -15,7 +16,17 @@ namespace CaesarCipher
             _client = client;
         }
 
-        public async Task CryptWikiSearchResult(CommandLineOptions options, Action<string> print)
+        public async Task CryptWikiSearchResult(string[] args, Action<string> print)
+        {
+            await CommandLine.Parser.Default
+                .ParseArguments<CommandLineOptions>(args)
+                .MapResult(options =>
+                {
+                    return CryptWikiSearchResult(options, print);
+                }, err => Task.CompletedTask);
+        }
+
+        private async Task CryptWikiSearchResult(CommandLineOptions options, Action<string> print)
         {
             var query = options.Query;
             print($"Searching for { query }...");

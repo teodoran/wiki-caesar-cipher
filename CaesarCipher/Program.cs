@@ -1,24 +1,20 @@
 ﻿using System;
-using CommandLine;
+using System.Threading.Tasks;
 using CaesarCipher.WikiSearch;
 
 namespace CaesarCipher
 {
     public class Program
     {   
-        static void Main(string[] args)
+        /*
+         * Async main is only available in C# v7.1 or greater
+         * You can get this by setting <LangVersion>latest</LangVersion> in a <PropertyGroup>
+         */
+        static async Task Main(string[] args)
         {
             var client = new WebClient();
-            var runner = new WikiCrypt(client);
-            
-            CommandLine.Parser.Default
-                .ParseArguments<CommandLineOptions>(args)
-                .WithParsed<CommandLineOptions>(options =>
-                {
-                    runner
-                        .CryptWikiSearchResult(options, s => Console.WriteLine(s))
-                        .GetAwaiter().GetResult();
-                });
+            var wikiCrypt = new WikiCrypt(client);
+            await wikiCrypt.CryptWikiSearchResult(args, s => Console.WriteLine(s));
         }
     }
 }
